@@ -29,7 +29,6 @@ class BankAccount:
             print("You're broke!")
         return self
 
-# use a classmethod to print all instances of a Bank Account's info (couldn't get this to work)
     @classmethod
     def print_all_accounts(cls):
         for account in cls.all_accounts:
