@@ -54,10 +54,6 @@ class User:
         print(f"{self.name} has a Checkings Balance of: ${self.account.balance}")
         return self
 
-    # def transfer_money(self, other_user, amount):       <--- Didn't have time to get this to work
-    #     self.account.balance -= amount
-    #     other_user.account.balance += amount
-    #     return self
 
 # Instanciation Test for BankAccount-------------------------------------------
 user_mitchell = BankAccount(0.01, 50)
