@@ -1,0 +1,6 @@
+{
+    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.extraPaths": [
+        "./flask_mysql/db_connection/first_flask_mysql"
+    ]
+}

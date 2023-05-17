@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <title>HTML Table</title>
+</head>
+<body>
+    <div class="col-6 mx-auto my-5"> <!-- mx-auto centers the div horizontally, my-5 adds margin to the top and bottom -->
+        <table class="table table-bordered table-hover"> <!-- table-bordered adds borders to the table, table-hover adds a hover effect to the table -->
+            <thead class="bg-primary text-light "> <!-- bg-primary adds a blue background to the table header, text-light makes the text white -->
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Full Name</th>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{user['first_name']}}</td>
+                    <td>{{ user['last_name'] }}</td>
+                    <td>{{ user['first_name'] }} {{ user['last_name'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+</body>
+</html>

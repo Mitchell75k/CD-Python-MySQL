@@ -1,0 +1,17 @@
+SELECT name FROM names LIMIT 0, 1000;
+
+INSERT INTO names (name) VALUES ('Mitchell Esparza');
+
+INSERT INTO names (name) VALUES ('Mitchell Esparza');
+
+INSERT INTO names (name) VALUES ('Ashley Vasquez');
+
+SELECT name FROM names LIMIT 0, 1000;
+
+UPDATE names SET name = 'Ben Velasquez' WHERE id = 2;
+
+SELECT name FROM names LIMIT 0, 1000;
+
+DELETE FROM names WHERE id = 3;
+
+SELECT name FROM names LIMIT 0, 1000;

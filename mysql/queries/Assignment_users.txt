@@ -1,0 +1,21 @@
+SELECT * FROM users;
+
+INSERT INTO users (first_name, last_name, email)  VALUES ('Mitchell', 'Esparza', 'Alexis75k@icloud.com');
+
+INSERT INTO users SET first_name = 'Ashley', last_name = 'Vasquez', email = 'Ashy.0.@gmail.com';
+
+INSERT INTO users SET first_name = 'Ben', last_name = 'Velasquez', email = 'BenV.0.@gmail.com';
+
+SELECT * FROM users;
+
+SELECT * from users WHERE email = 'Alexis75k@icloud.com' ;
+
+SELECT * from users WHERE id = 3;
+
+UPDATE users SET last_name = 'Pancakes'  WHERE id = 3;
+
+DELETE FROM users WHERE id =2;
+
+SELECT * FROM users ORDER by first_name asc LIMIT 0, 1000;
+
+SELECT * FROM users ORDER by first_name desc LIMIT 0, 1000

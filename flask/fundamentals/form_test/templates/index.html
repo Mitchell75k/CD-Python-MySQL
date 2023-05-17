@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Test</title>
+</head>
+<body>
+    <h1>Index Page</h1>
+<h3>Create a User</h3>
+<form action='/users' method='post'> <!-- the action attribute tells the form where to send the data, in this case to the /users route -->
+    <label for='name'>Name:</label> <!--the method attribute tells the form what HTTP method to use when sending the data --> <!-- the for attribute is used to create a label for the input tag -->
+    <input type='text' name='name'> <!-- the name attribute tells the form what key to use when sending the data --> <!-- the type attribute tells the form what type of input to create -->
+    <label for='email'>Email:</label> <!-- the label tag is used to create a label for the input tag -->
+    <input type='email' name='email'> <!-- the input tag is used to create an input field -->
+    <input type='submit' value='create user'> <!-- the value attribute is used to create the text on the submit button -->
+</form>
+
+</body>
+</html>

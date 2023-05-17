@@ -1,0 +1,29 @@
+INSERT INTO dojos (name) VALUES ('Los Angeles'), ('Tokyo'), ('New York');
+
+DELETE FROM dojos where id > 0;
+
+INSERT INTO dojos (name) VALUES ('Los Angeles'), ('Tokyo'), ('New York');
+
+INSERT INTO ninjas SET first_name ='Mitchell', last_name = 'Esparza', age = 21, dojos_id= 1;
+
+INSERT INTO ninjas SET first_name ='Ashley', last_name = 'Vasquez', age = 21, dojos_id= 1;
+
+INSERT INTO ninjas SET first_name ='Ben', last_name = 'Velasquez', age = 21, dojos_id= 1;
+
+INSERT INTO ninjas SET first_name ='Nick', last_name = 'Era', age = 21, dojos_id= 2;
+
+INSERT INTO ninjas SET first_name ='Eva', last_name = 'Jones', age = 21, dojos_id= 2;
+
+INSERT INTO ninjas SET first_name ='John', last_name = 'Jones', age = 21, dojos_id= 2;
+
+INSERT INTO ninjas SET first_name ='Micheal', last_name = 'Jackson', age = 100, dojos_id= 3;
+
+INSERT INTO ninjas SET first_name ='Lauren', last_name = 'Hill', age = 55, dojos_id= 3;
+
+INSERT INTO ninjas SET first_name ='Izzy', last_name = 'Adesanya', age = 34, dojos_id= 3;
+
+SELECT * FROM ninjas WHERE dojo_id = 1;
+
+SELECT * FROM ninjas WHERE dojo_id = 3;
+
+SELECT dojos_id FROM ninjas WHERE id = 3 
