@@ -76,10 +76,4 @@ user_mitchell.make_deposit(100).make_withdrawal(50).display_user_balance()
 user_ashley = User("Ashley", "Ashley202@burrito.com")
 user_ashley.make_deposit(500).make_withdrawal(50).display_user_balance()
 
-#to push an existing folder to github use the following commands in terminal: 
-# git init
-# git add .
-# git commit -m "first commit"
-# git remote add origin
-# git push -u origin master
-#this will push the folder to github and create a new repository
+
