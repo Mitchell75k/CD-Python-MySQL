@@ -1,0 +1,2 @@
+favorite_color = input('red') # input takes a prompt, which needs to be a string
+print(f'Your favorite color is: {favorite_color}') #output, prints the color given to the console, it will not print theres nothing in the input
