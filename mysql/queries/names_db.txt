@@ -1,0 +1,7 @@
+SELECT * FROM names;
+INSERT INTO names (name)  VALUES ('Mitchell Esparza');
+INSERT INTO names (name) VALUES ("Ashley Vasquez");
+INSERT INTO names (name) Values ("Chris Esparza");
+UPDATE names  SET name = "Chris Ventura" WHERE id = 3
+SET SQL_SAFE_UPDATES = 0;
+DELETE FROM names WHERE name = "Chris Ventura";

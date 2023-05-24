@@ -26,4 +26,4 @@ SELECT * FROM ninjas WHERE dojo_id = 1;
 
 SELECT * FROM ninjas WHERE dojo_id = 3;
 
-SELECT dojos_id FROM ninjas WHERE id = 3 
+SELECT * FROM dojos_and_ninjas_schema.ninjas WHERE id = 9
