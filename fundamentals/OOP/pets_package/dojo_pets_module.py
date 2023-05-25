@@ -48,7 +48,7 @@ class Pet:
     
 class Dog(Pet): #Here we are using inheritance to inherit the attributes and methods of the Pet parent class.
     def __init__(self,name,type,tricks):
-        super().__init__(name,type,tricks, noise="Woof")
+        super().__init__(name,type,tricks, noise="Woof") #Here we are using the super() method to inherit the attributes of the parent class.
 class Cat(Pet):
     def __init__(self,name,type,tricks,):
         super().__init__(name,type,tricks, noise="Meow")
