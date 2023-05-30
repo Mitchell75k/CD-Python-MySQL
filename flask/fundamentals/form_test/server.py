@@ -13,7 +13,7 @@ def create_user(): # the server is listening for a POST request to the '/users' 
     
     print(request.form) # request.form is a dictionary that contains the data that was submitted in the form in the index.html file 
     
-    session['username'] = request.form['name'] # we can access the data in the dictionary by the name attribute that we gave each input in the form, example: name = request.form['name'], email = request.form['email']
+    session['username'] = request.form['name'] # we can access the data in the dictionary by the name attribute that we gave each input in the html form, example: name = request.form['name'], email = request.form['email']
     session ['useremail'] = request.form['email'] 
     #instead, we are storing the data from the form in session variables so that we can access the data in the show.html template without having to pass the data to the template as a variable
     # session variables are accessible in any route function, just like request.form is accessible in any route function. The difference is that session variables are accessible in the template as well, while request.form is not.
@@ -24,6 +24,8 @@ def create_user(): # the server is listening for a POST request to the '/users' 
     #instead we will redirect to our show route and then render the template, this way a refresh will not re-add the user to our database
 
 
+#NOTE:  note that the type of anything that comes in through request.form will be a "string" no matter what. If you want that value to be identified as an actual number you'll have to type cast it.
+# for example: request.form['age'] will be a string, so if you want to use that value as an integer you'll have to do something like this: age = int(request.form['age'])
 
 @app.route("/show")
 def show_user():

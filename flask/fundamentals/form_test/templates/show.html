@@ -8,8 +8,7 @@
 </head>
 <body>
     <h1>User:</h1>
-    <h3>{{session['username']}}</h3>
+    <h3>{{session.username}}</h3> <!-- we can also use dot notation to access the data stored in the session dictionary because the session part of session['username'] is a dictionary -->
     <h3>{{session['useremail']}}</h3>
-
 </body>
 </html>

@@ -8,20 +8,24 @@
 </head>
 <body>
 
-    <h1>Random Numbers</h1>
-    {% for number in random_numbers %}
-        <p>{{ number }}</p>
-    {% endfor %}
 
-    <h1>Students</h1>
-    {% for student in students %}
-        <p>{{ student['name'] }} - {{ student['age'] }}</p>
-    {% endfor %}
+    <table>
+        <h1>Random Numbers</h1>
+        <tbody>
+            <tr>
+                <td>
+                    {% for number in random_numbers %}
+                    <p>{{ number }}</p>
+                    {% endfor %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
-    <h1>Students</h1>
-    {% for student in students %}
-        <p>{{ student.name }} - {{ student.age }}</p> {# Notice how we can access the attributes of the student object #}
-    {% endfor %}                                      {# without having to use the dictionary syntax #}
+        <h1>Students</h1>
+        {% for student in students %}
+            <p>{{ student.name }} - {{ student.age }}</p> {# Notice how we can access the attributes of the student object #}
+        {% endfor %}                                      {# without having to use the dictionary syntax #}
 </body>                                               {# This is because the student object is a class object #}
-</html>                                               {# and has attributes that we can access #}
-                                {# This is a more object oriented approach, since we can just use dot notation #}
+</html>                                               {# and has attributes that we can access through dot notation #}
+                                {# This is a more object oriented approach, since we can just use dot notation. #}

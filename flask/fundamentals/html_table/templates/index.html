@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="col-6 mx-auto my-5"> <!-- mx-auto centers the div horizontally, my-5 adds margin to the top and bottom -->
-        <table class="table table-bordered table-hover"> <!-- table-bordered adds borders to the table, table-hover adds a hover effect to the table -->
+        <table class="table table-bordered table-hover"> <!-- table-bordered adds borders to the table, table-hover adds a hover effect to the table and table adds a basic table style -->
             <thead class="bg-primary text-light "> <!-- bg-primary adds a blue background to the table header, text-light makes the text white -->
                 <th>First Name</th>
                 <th>Last Name</th>
@@ -18,14 +18,13 @@
             <tbody>
                 {% for user in users %}
                 <tr>
-                    <td>{{user['first_name']}}</td>
+                    <td>{{user.first_name}}</td> <!-- user.first_name is the same as user['first_name'], but dot notation is preferred bc it's easier to read -->
                     <td>{{ user['last_name'] }}</td>
-                    <td>{{ user['first_name'] }} {{ user['last_name'] }}</td>
+                    <td>{{ user.first_name }} {{ user['last_name'] }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
 </body>
