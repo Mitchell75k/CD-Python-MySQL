@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results Page</title>
+
+</head>
+
+<body>
+    <h1>Congrats! You Won!!!</h1>
+
+    <h2>-Leader Board-</h2>
+    <h3>Enter your name to be added to the leader board</h3>
+    <form action="/winner">
+        <input type="text" name="player">
+        <input type="submit" value="Submit">
+    </form>
+
+    <table>
+        <th>
+            <td>Player</td>
+            <td>Attempts</td>
+            <td>Number</td>
+        </th>
+        
+        <tr>
+            <td>{{session.player}}</td>
+            <td>{{session.attempt_num}}</td>
+            <td>{{session.number}}</td>
+    </table>
+    
+    <form action="/reset">
+        <input type="submit" value="Play Again">
+    <h1></h1>
+</body>
+</html>
