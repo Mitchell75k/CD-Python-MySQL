@@ -18,7 +18,7 @@ def index():
 
 @app.route('/destroy_session')
 def destroy_session():
-    session.clear()
+    session.clear() #if there were more cookies, we could use session.pop('counter') to remove only the key-value pair that we want to remove, which would be the counter key-value pair in this case
     return redirect('/')
 
 @app.route('/add_two')

@@ -29,6 +29,8 @@ def create_user(): # the server is listening for a POST request to the '/users' 
 
 @app.route("/show")
 def show_user():
+    print("Showing the User Info From the Form")
+    print(request.form)
     return render_template('show.html', name_on_template = session['username'], email_on_template = session['useremail']) 
 # we are rendering the show.html template and passing the name and email variables to the template for it to display the information from the form
 # we could also pass the session variables directly to the template like this: return render_template('show.html', name_on_template = request.form['name'], email_on_template = request.form['email'])
