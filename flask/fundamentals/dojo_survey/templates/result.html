@@ -10,7 +10,7 @@
 <body>
     <div class="container d-flex align-items-center flex-column justify-content-evenly bg-dark text-warning w-75 h-100 pt-4 pb-4 mt-1" >
             <h1>{{session['first_name']}}'s Submitted Info</h1>
-            <p>Name: {{session['first_name']}} {{session['last_name']}}</p>
+            <p>Name: {{session.name}}</p>
             <p>Dojo Location: {{session['location']}}</p>
             <p>Favorite Language: {{session['language']}}</p>
             <p>Comment: {{session['comment']}}</p>

@@ -10,12 +10,13 @@ def index():
 @app.route('/process', methods=['POST']) # here we post the data from the form to the '/process' route and then redirect to the '/result' route
 def process():
     print("Got Survery Info")
-    print(request.form)
     session['first_name'] = request.form['first_name']
     session['last_name'] = request.form['last_name']
     session['location'] = request.form['location']
     session['language'] = request.form['language']
     session['comment'] = request.form['comment']
+    session['name'] = session['first_name'] + " " + session['last_name']
+    print(f"Here's request.form: {request.form}")
     return redirect("/result")
 
 @app.route("/result")
