@@ -21,7 +21,7 @@ def process():
 
 @app.route("/result")
 def result():
-    return render_template('result.html', name_on_template = session['name'], location_on_template = session['location'], language_on_template = session['language'], comment_on_template = session['comment'])
-# we are rendering the result.html template and passing the 'name', 'location', 'comment', and 'language' variables to the template for it to display the information from the form
+    return render_template('result.html')
+
 if __name__ == "__main__":
     app.run(debug=True, host="localhost", port=5003)
