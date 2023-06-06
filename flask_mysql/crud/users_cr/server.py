@@ -10,7 +10,7 @@ def index():
 @app.route('/users')
 def users():
     users = User.get_all()
-    print(users)
+    print(f"users:{users}")
     return render_template("read_all.html", all_users = users)
 
 

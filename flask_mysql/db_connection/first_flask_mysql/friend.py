@@ -8,7 +8,7 @@ class Friend:
     DB="first_flask" #this is the name of the database (schema) we are connecting to, you could change this to a different database that you have created
     def __init__( self , data ):
         self.id = data['id']
-        self.first_name = data['first_name']
+        self.first_name = data['first_name'] #data is a dictionary that contains all of the data from a row in the database, so you can access the data with the keys from the table as the keys in the dictionary
         self.last_name = data['last_name'] 
         self.occupation = data['occupation']
         self.created_at = data['created_at']
@@ -28,6 +28,13 @@ class Friend:
             friends.append( cls(friend) )
         return friends
 
+#class method to get one friend from the database
+    @classmethod
+    def get_one(cls, friend_id):
+        query  = "SELECT * FROM friends WHERE id = %(id)s;"
+        data = {'id': friend_id}
+        results = connectToMySQL(cls.DB).query_db(query, data)
+        return cls(results[0]) # type: ignore
 
     #class method to add/save a friend to the database
     @classmethod

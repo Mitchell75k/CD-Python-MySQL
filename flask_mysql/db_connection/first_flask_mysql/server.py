@@ -10,6 +10,12 @@ def index():
     print(friends)
     return render_template("index.html", all_friends = friends) # all_friends is the variable we will pass to index.html, and friends is the data we are sending to the template
 
+@app.route('/friend/show/<int:friend_id>')
+def show(friend_id):
+    # calling the get_one method and supplying it with the id of the friend we want to get
+    friend=Friend.get_one(friend_id)
+    return render_template("show_friend.html", friend=friend)
+
 @app.route('/create_friend', methods=["POST"])
 def create_friend():
     # First we make a data dictionary from our request.form coming from our template.
@@ -26,7 +32,7 @@ def create_friend():
     return redirect('/')
 
 
-@app.route('/friends/update',methods=['POST']) #this route is for updating a friend, and we are making sure to capture the id from the url. So to update a friend, we need to make sure we include <int:friend_id> in our route!
+@app.route('/friends/update/<int:friend_id>',methods=['POST']) #this route is for updating a friend, and we are making sure to capture the id from the url. So to update a friend, we need to make sure we include <int:friend_id> in our route!
 def update():
     Friend.update(request.form)
     return redirect('/')
@@ -37,6 +43,6 @@ def delete(friend_id):
     return redirect('/')
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=5007)
 
 #where is the query_db method coming from? It is coming from the mysqlconnection.py file. We imported the function connectToMySQL from that file, and that function returns an instance of MySQLConnection, which has the query_db method available to it.
