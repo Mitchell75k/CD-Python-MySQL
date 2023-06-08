@@ -9,7 +9,7 @@
 <body>
     <h1>All My Friends</h1> <!-- here we are using the variable all_friends that we passed from the route and we are looping through it to display all the friends -->
     {% for one_friend in all_friends %}
-        <p>First Name: {{one_friend.first_name}}</p>
+        <p>First Name: {{one_friend.first_name}}</p> <!-- here we are using dot notation to access the keys in the dictionary that comes from the database. For example, one_friend.first_name is the same as one_friend['first_name'] -->
         <p>Last Name: {{one_friend.last_name}}</p>
         <p>Occupation: {{one_friend.occupation}}</p>
         <hr>

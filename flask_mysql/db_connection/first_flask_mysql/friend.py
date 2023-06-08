@@ -30,15 +30,15 @@ class Friend:
 
 #class method to get one friend from the database
     @classmethod
-    def get_one(cls, friend_id):
+    def get_one(cls, friend_id): #friend_id is the id of the friend we want to get - we will need to pass in the friend_id to this method when we call it from server.py
         query  = "SELECT * FROM friends WHERE id = %(id)s;"
         data = {'id': friend_id}
         results = connectToMySQL(cls.DB).query_db(query, data)
-        return cls(results[0]) # type: ignore
+        return cls(results[0]) # type: ignore #we put [0] at the end of results because we only want one friend, not a list of friends. results is a list of dictionaries, so we need to pass the first item in the list to the constructor, which is results[0]
 
     #class method to add/save a friend to the database
     @classmethod
-    def save(cls, data ):
+    def save(cls, data ): # data is a dictionary that will be passed into the save method from server.py
         query = "INSERT INTO friends ( first_name , last_name , occupation , created_at, updated_at ) VALUES ( %(fname)s , %(lname)s , %(occ)s , NOW() , NOW() );"
         # one of the variables is called data, the other is called query. the variables in the query string need to match the keys in the data dictionary, for example, %(fname)s needs to match the key "fname" in the data dictionary.
         
@@ -50,7 +50,7 @@ class Friend:
 
     @classmethod
     def update(cls, data ):
-        query = "UPDATE friends SET first_name=%(fname)s, last_name=%(lname)s, occupation=%(occ)s, updated_at=NOW() WHERE id=%(id)s;"
+        query = "UPDATE friends SET first_name=%(fname)s, last_name=%(lname)s, occupation=%(occ)s, updated_at=NOW() WHERE id=%(id)s;" #the %(fname)s, %(lname)s, %(occ)s, and %(id)s are the keys in the data dictionary that will be passed into the update method from server.py
         results= connectToMySQL(cls.DB).query_db( query, data ) 
         return results
 #This method will update the friend in the database with the id that matches the id in the data dictionary. The data dictionary is passed in from server.py. The keys in the data dictionary need to match the columns in the table.

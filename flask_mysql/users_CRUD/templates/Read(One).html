@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Read User</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>User {{ user.id }}</h1>
+    <div id="form2">
+        <form action="/users/{{ user.id }}" method="post">
+            <input type="hidden" name="_method" value="PUT">
+            <div>
+                <label for="first_name">First Name:</label>
+                <input type="text" name="first_name" value="{{ user.first_name }}" disabled>
+                <label for="last_name">Last Name:</label>
+                <input type="text" name="last_name" value="{{ user.last_name }}" disabled>
+                <label for-=email>Email:</label>
+                <input type="text" name="email" value="{{ user.email }}" disabled>
+            </div>
+            <div id="buttons">
+                <a href="/users/{{ user.id }}/edit" id="edit">Edit</a>
+                <a href="/users/{{ user.id }}/delete" id="delete">Delete</a>
+                <a href="/users" id="back">Back</a>
+            </div>
+        </form>
+    </div>
+</html>

@@ -14,7 +14,8 @@ class MySQLConnection:
         # establish the connection to the database
         self.connection = connection
     # the method to query the database
-    def query_db(self, query:str, data:dict=None): # data is optional because not all queries will need them. This method will be used to run SELECT, INSERT, UPDATE, and DELETE queries on the database from our python files. # type: ignore
+    def query_db(self, query:str, data:dict=None): # data is optional because not all queries will need them. This method will be used to run SELECT, INSERT, UPDATE, and DELETE queries on the database from our python files. #type: ignore
+        #it will return the data from SELECT queries, and the number of rows affected from INSERT, UPDATE, and DELETE queries. 
         with self.connection.cursor() as cursor:
             try: #here we are trying to run the query with the data
                 query = cursor.mogrify(query, data)
