@@ -2,6 +2,8 @@
     "python.analysis.typeCheckingMode": "basic",
     "python.analysis.extraPaths": [
         "./flask_mysql/db_connection/first_flask_mysql",
-        "./flask_mysql/burgers_mod/models"
+        "./flask_mysql/burgers_mod/models",
+        "./flask_mysql/1671577575__burgers",
+        "./flask_mysql/burgerz/flask_app/models"
     ]
 }
