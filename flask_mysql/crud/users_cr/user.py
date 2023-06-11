@@ -21,8 +21,27 @@ class User:
             users.append( cls(user) )
         return users
     
+    # class method to get a user from the database
+    @classmethod
+    def get_one(cls, data ):
+        query = "SELECT * FROM users WHERE id = %(id)s;" #%(id)s is a placeholder for the id we will get from the data dictionary we pass into the method from server.py
+        results = connectToMySQL(cls.DB).query_db(query, data)
+        return cls( results[0] ) # type: ignore
+    
     # class method to add/save a user to the database
     @classmethod
     def save(cls, data ):
         query = "INSERT INTO users ( first_name , last_name , email , created_at, updated_at ) VALUES ( %(fname)s , %(lname)s , %(email)s , NOW() , NOW() );"
+        return connectToMySQL(cls.DB).query_db( query, data )
+    
+    # class method to update a user in the database
+    @classmethod
+    def update(cls, data ):
+        query = "UPDATE users SET first_name = %(fname)s , last_name = %(lname)s , email = %(email)s , updated_at = NOW() WHERE id = %(id)s;"
+        return connectToMySQL(cls.DB).query_db( query, data )
+    
+    # class method to delete a user from the database
+    @classmethod
+    def delete(cls, data ):
+        query = "DELETE FROM users WHERE id = %(id)s;"
         return connectToMySQL(cls.DB).query_db( query, data )

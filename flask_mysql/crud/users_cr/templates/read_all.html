@@ -17,14 +17,21 @@
                 <th>Full Name</th>
                 <th>Email</th>
                 <th>Created At</th>
+                <th>Updated At</th>
+                <th>Actions</th>
             </tr>
             </thead>
             {% for user in all_users %}
             <tbody>
                 <tr>
-                    <td>{{user.first_name}} {{user.last_name}}</td>
+                    <td>{{user.first_name}} {{user.last_name}}</td> <!-- the variable user refers to the user object in the all_users list -->
                     <td>{{user.email}}</td>
-                    <td>{{user.created_at}}</td>
+                    <td>{{user.created_at.strftime('%b %d, %Y')}}</td>
+                    <td>{{user.updated_at.strftime('%b %d, %Y')}}</td>
+                    <td>
+                        <a href="/users/{{user.id}}">Show</a> <!-- this link will route to the show route and pass the user's id -->
+                        <a href="/users/{{user.id}}/edit">Edit</a> <!-- this link will route to the edit route and pass the user's id -->
+                        <a href="/users/{{user.id}}/delete">Delete</a> <!-- this link will route to the destroy route and pass the user's id -->
                 </tr>
             </tbody>
             {% endfor %}
