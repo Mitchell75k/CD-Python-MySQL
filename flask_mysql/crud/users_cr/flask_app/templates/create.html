@@ -8,19 +8,21 @@
     <title>Create</title>
 </head>
 <body>
-    <div class="container d-flex justify-content-center align-items-md-center flex-column  bg-dark text-warning pt-4 pb-lg-5 mt-1 col-12 row-cols-xxl-5">
+    <div class="container d-flex justify-content-center align-items-md-center flex-column  bg-dark text-warning pt-4 pb-lg-5 mt-1 col-12 row-cols-xxl-5 font-monospace">
         <h1 class="text-lg-center">Add a New User</h1> <!-- this form will be handled by the route /add_user -->
         <form action="/users/new" method="POST" >
-            <div>
+            <div class="mt-4 form-check-inline">
                 <label for="fname">First Name:</label>
                 <input type="text" name="fname">
-                <label for="lname"class="mt-5">Last Name:</label>
+                <label for="lname">Last Name:</label>
                 <input type="text" name="lname">
-                <label for="email" class="mt-5">Email:</label>    
+                <label for="email" > Email:</label>    
                 <input type="text" name="email">
-                <input type="submit" value="Create" class="mt-5">
+                <input type="submit" value="Create">
             </div>
-        <a href="/users" class="mt-5">Home</a>
+            <div class="mt-5">
+                <a href="/users" >Home</a>
+            </div>
         </form>
     </div> 
 </body>

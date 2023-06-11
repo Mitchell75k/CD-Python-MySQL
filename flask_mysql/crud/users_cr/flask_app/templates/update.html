@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div class="container d-flex justify-content-center align-items-md-center flex-column  bg-dark text-warning pt-4 pb-lg-5 mt-1 col-12 row-cols-xxl-5">
+    <div class="container d-flex justify-content-center align-items-md-center flex-column  bg-dark text-warning pt-4 pb-lg-5 mt-1 col-12 row-cols-xxl-5 font-monospace">
         <h1 class="text-lg-center">Edit User {{user.id}}</h1> 
         <form action="/users/{{user.id}}/update" method="POST" >
             <div>
@@ -24,7 +24,7 @@
         <a class= "justify-content-center" href="/users" class="mt-5">Home</a>
         <a class= "justify-content-center" href="/users/{{user.id}}/delete">Delete</a>
         </form>
-</div> 
+    </div> 
     </body>
     </html>
 

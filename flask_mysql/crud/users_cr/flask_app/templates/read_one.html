@@ -11,17 +11,23 @@
 <body>
     <div class="d-flex justify-content-center align-items-center flex-column "> <!-- to center, type d-flex justify-content-center align-items-center flex-column -->
         <h1> User {{user.id}} </h1>
-        <div class="container-lg bg-dark text-warning pt-4 pb-3 col-7">
-                <p> Full Name: {{user.first_name}} {{user.last_name}}</p>
-                <p> Email: {{user.email}}</p>
+        <div class="container-lg bg-dark text-warning pt-4 pb-3 col-7 font-monospace"> <!-- to bold, type font-weight-bold in the class -->
+            <p> Full Name: {{user.first_name}} {{user.last_name}}</p>
+            <p> Email: {{user.email}}</p>
                 <p> Created On: {{user.created_at}}</p> <!-- user refers to the variable we passed from the route, the dot notation allows us to access the properties of the user object -->
                 <p> Last Updated On: {{user.updated_at}}</p>
         </div>
     </div>
     <div class="d-flex justify-content-center align-items-center mt-3 "> <!-- fix the spacing between the buttons -->
-            <a href="/users/{{user.id}}/edit">Edit</a> 
-            <a href="/users/{{user.id}}/delete">Delete</a>
-            <a href="/users">Home</a>
+            <div class="m-2">
+                <a href="/users/{{user.id}}/edit">Edit</a> 
+            </div>
+            <div class="m-2">
+                <a href="/users/{{user.id}}/delete">Delete</a>
+            </div>
+            <div class="m-2">
+                <a href="/users">Home</a>
+            </div>
     </div>
 </body>
 </html>

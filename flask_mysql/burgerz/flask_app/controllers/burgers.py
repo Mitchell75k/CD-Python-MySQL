@@ -1,5 +1,5 @@
 
-from flask_app import app
+from flask_app import app #importing the app variable from the app package in __init__.py
 
 from flask_app.models.burger import Burger
 

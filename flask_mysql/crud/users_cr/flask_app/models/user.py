@@ -1,4 +1,6 @@
-from mysqlconnection import connectToMySQL
+from flask_app.config.mysqlconnection import connectToMySQL #importing the function that will return an instance of a connection
+
+
 # model the class after the users table from our database
 class User:
     DB = 'users_schema'
