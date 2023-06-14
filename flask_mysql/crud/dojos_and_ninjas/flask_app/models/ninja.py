@@ -4,13 +4,12 @@ class Ninja:
     DB = 'dojos_and_ninjas_schema'
     def __init__( self , data ):
         self.id = data['id']
-        self.dojo_id = data['dojo_id']
+        self.dojo_id = data['dojo_id'] # this is the id of the dojo the ninja belongs to, this comes from the foreign key in the ninjas table
         self.first_name = data['first_name']
         self.last_name  = data['last_name']
         self.age = data['age']
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
-        self.dojo = data['dojo_id'] # we will fill this up later, this will be used for the foreign key relationship
 
 
     # Now we use class methods to query our database
@@ -21,7 +20,7 @@ class Ninja:
         query = "SELECT * FROM ninjas;"
         results = connectToMySQL(cls.DB).query_db(query)
         ninjas = []
-        for ninja in results: # type: ignore
+        for ninja in results: # type: ignore #here we are looping through the results and appending each row to the ninjas list
             ninjas.append( cls(ninja) )
         return ninjas
     
@@ -35,7 +34,7 @@ class Ninja:
     # class method to add/save a ninja to the database
     @classmethod
     def save(cls, data ):
-        query = "INSERT INTO ninjas ( dojo_id, first_name, last_name, age, created_at, updated_at ) VALUES ( %(dojo_id)s, %(fname)s, %(lname)s, %(age)s, NOW() , NOW() );"
+        query = "INSERT INTO ninjas ( first_name, last_name, age, dojo_id, created_at, updated_at ) VALUES ( %(fname)s, %(lname)s, %(age)s, %(dojo_id)s, NOW() , NOW() );"
         return connectToMySQL(cls.DB).query_db( query, data )
     
     # class method to delete a ninja from the database
