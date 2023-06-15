@@ -26,7 +26,9 @@
                     <td>{{ ninja.last_name}}</td> <!-- FIX L8R dojo.ninjas is a list of ninjas, so we can use the length filter to get the number of ninjas in the list by typing dojo.ninjas|length -->
                     <td>{{ ninja.age }}</td>
                     <td>
-                        <a href="/ninjas/{{ ninja.id }}/delete">Delete</a>
+                        <a href="/ninjas/{{ ninja.id }}/delete">Delete | </a>
+                        <a href="/ninjas/{{ ninja.id }}/edit">Edit</a>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>

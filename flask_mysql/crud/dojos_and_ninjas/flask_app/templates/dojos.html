@@ -18,8 +18,7 @@
                 <input type="submit" value="Add Dojo">
             </form>
         </div>
-
-
+        
         <div class=" container-sm d-inline-block align-items-md-center text-bg-dark text-warning flex-column p-3 m-3 border-black border border-3"> <!-- to change the text color to white, we can add the text-white class to the div -->
             <h1>All Dojos</h1>
             <table class="table table-bordered table-light table-striped container-fluid p-5 ">
@@ -38,6 +37,7 @@
                         <td>
                             <a href="/dojos/{{ dojo.id }}">View</a>
                             <a href="/dojos/{{ dojo.id }}/delete">Delete</a>
+                            <a href="/dojos/{{ dojo.id }}/edit">Edit</a>
                         </td>
                     </tr>
                     {% endfor %}

@@ -41,13 +41,21 @@ class Dojo:
         query = "DELETE FROM dojos WHERE id = %(id)s;"
         return connectToMySQL(cls.DB).query_db( query, data ) 
     
-    # class method to get all ninjas from the database
+
+    # class method to update a dojo in the database
+    @classmethod
+    def update(cls, data ):
+        query = "UPDATE dojos SET name = %(name)s WHERE id = %(id)s;"
+        return connectToMySQL(cls.DB).query_db( query, data )
+
+    
+    # class method to get all ninjas from the database. This works because we are using left join to get all the ninjas associated with a dojo by joining the dojo_id from the ninjas table with the id from the dojos table
     @classmethod
     def get_dojo_with_ninjas(cls, data):
         query = "SELECT * FROM dojos LEFT JOIN ninjas ON dojos.id = ninjas.dojo_id WHERE dojos.id = %(id)s;"
         results = connectToMySQL(cls.DB).query_db(query, data)
         dojo = cls(results[0]) # type: ignore
-        for db_row in results: # type: ignore
+        for db_row in results: # type: ignore this loop will run for each row in the results list and create a ninja object for each row and append it to the dojo.ninjas list
             ninja_data = {
                 "id": db_row["ninjas.id"],
                 "first_name": db_row["first_name"],
