@@ -1,7 +1,7 @@
 
 from flask_app import app #importing the app variable from the app package in __init__.py
 
-from flask_app.models.burger import Burger
+from flask_app.models.burger import Burger #importing the Burger class from the burger.py file in the models folder
 
 from flask import render_template, redirect, request, session, flash # type: ignore
 
@@ -19,8 +19,15 @@ def create():
         "meat": request.form['meat'],
         "calories": request.form['calories']
     }
-    Burger.save(data)
-    return redirect('/burgers')
+    # if there are errors:
+    # We call the staticmethod from the Burger model to validate
+    if not Burger.validate_burger(data): #if the validate_burger method returns false
+        # redirect to the route where the burger form is rendered.
+        return redirect('/')
+    # else no errors:
+    else:
+        Burger.save(data)
+        return redirect("/burgers")
 
 
 

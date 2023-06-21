@@ -10,10 +10,20 @@
 <body>
     <div class="container d-flex justify-content-center align-items-md-center flex-column  bg-dark text-warning pt-4 pb-lg-5 mt-1 col-12 row-cols-xxl-5 font-monospace">
         <h1 class="text-lg-center">Add a New User</h1> <!-- this form will be handled by the route /add_user -->
+        {% with messages = get_flashed_messages() %}<!-- get_flashed_messages() is a function that returns a list of all the flash messages, 'with' is a jinja keyword that allows us to assign a variable to a value -->
+        {% if messages %} <!-- if there are messages in the messages list, which is in the variable 'messages' -->
+            <ul class=flashes> <!-- flashes is a class we created in our css file, it is used to style the flash messages -->
+            {% for message in messages %}
+                <li>ERROR: {{ message }}</li> <!-- we use a for loop to loop through all the messages in the messages list -->
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
         <form action="/users/new" method="POST" >
             <div class="mt-4 form-check-inline">
                 <label for="fname">First Name:</label>
-                <input type="text" name="fname">
+                <input type="text" name="fname"> 
                 <label for="lname">Last Name:</label>
                 <input type="text" name="lname">
                 <label for="email" > Email:</label>    

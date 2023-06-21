@@ -11,6 +11,17 @@
 <body>
     <a href="/burgers">See all burgers</a>
     <form action="/create" method="post" class="p-3 col-4 mx-auto my-5 bg-dark text-light">
+    <!-- flash message: displays whenever there's an error with the user's input, at the very top of the form -->
+    {% with messages = get_flashed_messages() %}<!-- get_flashed_messages() is a function that returns a list of all the flash messages, 'with' is a jinja keyword that allows us to assign a variable to a value -->
+        {% if messages %}
+            <ul class=flashes> <!-- flashes is a class we created in our css file, it is used to style the flash messages -->
+            {% for message in messages %}
+                <li>{{ message }}</li> <!-- we use a for loop to loop through all the messages in the messages list -->
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
         <h2 class="text-center text-primary">Create Burger:</h2>
     
         <div class="form-group">

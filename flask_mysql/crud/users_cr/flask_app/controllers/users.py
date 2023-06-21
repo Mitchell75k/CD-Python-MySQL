@@ -1,5 +1,6 @@
 
 from flask_app import app #importing the app variable from the __init__.py file to run the server
+
 from flask_app.models.user import User #importing the User class from the user.py file in the models folder
 
 from flask import render_template, redirect, request, session, flash, url_for  # type: ignore
@@ -30,13 +31,16 @@ def show_user(id):
 
 @app.route('/users/new', methods=["POST"])
 def create_user():
-    #data = { 
-    #    "fname": request.form["fname"],
-    #    "lname" : request.form["lname"],
-    #    "email" : request.form["email"],
-    #}
-    User.save(request.form) #you could also pass the data dict instead of request.form values, which just seems like a lot of extra work to make a dict that's the same as request.form
-    return redirect('/users')
+    data = { 
+        "fname": request.form["fname"],
+        "lname" : request.form["lname"],
+        "email" : request.form["email"],
+    }
+    if not User.validate_user(data): 
+        return redirect('/')
+    else:
+        User.save(request.form) 
+        return redirect('/users')
 
 
 @app.route('/users/<int:id>/update', methods=["POST"])
@@ -47,6 +51,8 @@ def update_user(id):
         "lname" : request.form["lname"],
         "email" : request.form["email"],
     }
+    if not User.validate_user(data): 
+        return redirect(f'/users/{id}/edit')
     User.update(data)
     return redirect((url_for('show_user', id=id))) #notes:
 

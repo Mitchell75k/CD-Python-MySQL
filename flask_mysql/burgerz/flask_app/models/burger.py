@@ -1,6 +1,7 @@
 from flask_app.config.mysqlconnection import connectToMySQL
+from flask import flash #this is for flash messages # type: ignore
 
-class Burger:
+class Burger: 
     def __init__(self,data):
         self.id = data['id']
         self.name= data['name']
@@ -42,3 +43,24 @@ class Burger:
     def destroy(cls,data):
         query = "DELETE FROM burgers WHERE id = %(id)s;"
         return connectToMySQL('login_reg').query_db(query,data)
+    
+
+    # Other Burger methods remain up yonder.
+    # Static methods don't have self or cls passed into the parameters.
+    # We do need to take in a parameter to represent our burger
+    @staticmethod
+    def validate_burger(burger): # burger is a dictionary in the form of request.form but doesnt exist yet until we create it in server.py
+        is_valid = True # we assume this is true
+        if len(burger['name']) < 3:
+            flash("Name must be at least 3 characters.")
+            is_valid = False
+        if len(burger['bun']) < 3:
+            flash("Bun must be at least 3 characters.")
+            is_valid = False
+        if len(burger['meat']) < 3:
+            flash("Meat must be at least 3 characters.")
+            is_valid = False
+        if int(burger['calories']) < 200:
+            flash("Calories must be 200 or greater.")
+            is_valid = False
+        return is_valid # if is_valid is False, the form didn't validate

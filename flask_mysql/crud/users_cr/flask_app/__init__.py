@@ -4,7 +4,7 @@
 
 # Import Flask to allow us to create our app
 from flask import Flask # type: ignore
-
+from flask import session # type: ignore #this is for sessions, we use this to encrypt our session, and its also necesarry for flash messages
 # Create a new instance of the Flask class called "app"
 app = Flask(__name__)
 
