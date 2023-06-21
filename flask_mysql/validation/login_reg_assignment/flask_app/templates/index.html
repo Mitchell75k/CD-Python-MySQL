@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login or Register</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="d-flex">
+        <div class="d-flex justify-content-around">
+            <form class="text-light col-6 m-2 text-bg-dark p-md-4" action="/register" method="POST" >
+                <h1 class="text-primary">Register</h1> <!-- this form will be handled by the route /add_user -->
+                
+                <div class=" alert alert-danger">
+                    {% with messages = get_flashed_messages(category_filter["reg"]) %}<!-- get_flashed_messages() is a function that returns a list of all the flash messages, 'with' is a jinja keyword that allows us to assign a variable to a value -->
+                        {% if messages %} <!-- if there are messages in the messages list, which is in the variable 'messages' -->
+                            <ul class=flashes> <!-- flashes is a class we created in our css file, it is used to style the flash messages -->
+                            {% for message in messages %}
+                                <li>ERROR: {{ message }}</li> <!-- we use a for loop to loop through all the messages in the messages list -->
+                            {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endwith %}
+                </div>
+                
+                <div class="p-2 form-check">
+                    <div>
+                        <label for="fname">First Name:</label>
+                        <input type="text" name="fname"> 
+                    </div>
+                    <div class="mt-2">
+                        <label for="lname">Last Name:</label>
+                        <input type="text" name="lname">
+                    </div>
+                    <div class="mt-2">
+                        <label for="bday" >Birthday:</label>
+                        <input class="" type="date" name="bday">
+                    </div>
+                    <div> 
+                        
+                    </div>
+                    <div class="mt-2">
+                        <label for="email" > Email:</label>
+                        <input type="text" name="email">
+                    </div>
+                    <div class="mt-2">
+                        <label for="password" > Password:</label>
+                        <input type="password" name="password">
+                    </div>
+                    <div class="mt-2">
+                        <label for="confirm_password" > Confirm Password:</label>
+                        <input type="password" name="confirm_password"> <!-- remember to create a flash message if the passwords don't match -->
+                    </div>
+                    <input type="submit" class="btn btn-primary mt-4" value="Register">
+                </div>
+            </form>
+        </div> 
+
+        <div class=" d-flex justify-content-around">
+            <form class="text-light col-lg-6 m-2 text-bg-dark p-md-4" action="/login" method="POST" >
+                <h1 class="text-success">Login </h1> <!-- this form will be handled by the route /add_user -->
+                
+                <div class=" alert alert-danger">
+                    {% with messages = get_flashed_messages(category_filter=["log"]) %}<!-- get_flashed_messages() is a function that returns a list of all the flash messages, 'with' is a jinja keyword that allows us to assign a variable to a value -->
+                        {% if messages %} <!-- if there are messages in the messages list, which is in the variable 'messages' -->
+                            <ul class=flashes> <!-- flashes is a class we created in our css file, it is used to style the flash messages -->
+                            {% for message in messages %}
+                                <li>ERROR: {{ message }}</li> <!-- we use a for loop to loop through all the messages in the messages list -->
+                            {% endfor %}
+                            </ul>
+                        {% endif %}
+                    {% endwith %}
+                </div>
+                
+                <div class="p-2 form-check">
+                    <div class="mt-2">
+                        <label for="email" > Email:</label>
+                        <input type="text" name="email">
+                    </div>
+                    <div class="mt-4">
+                        <label for="password" > Password:</label>
+                        <input type="password" name="password">
+                    </div>
+                    <input type="submit" class="btn btn-success mt-4" value="Login">
+                </div>
+            </form>
+        </div> 
+    </div>
+</body>
+</html> 
