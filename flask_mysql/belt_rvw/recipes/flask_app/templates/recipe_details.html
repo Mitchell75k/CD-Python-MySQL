@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Recipe Details</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container row d-flex mx-auto " style="padding: 10px; padding-right: 15px;">
+        <div class="text-primary">
+            <h1> Welcome {{user.first_name}}! </h1>
+            <div class="d-flex">
+                <div style="position:absolute; left: 70%;">
+                    <a style="margin-right: 20px;" href="/dashboard">All Recipes</a>
+                    <a style="margin-right: 30px;" href="/recipes/new">+ Create</a> 
+                    <a style="margin-right: 3px;" href="/logout">Logout</a>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: 20px;">
+            <h1> Dish Name: "{{recipe.name}}"</h1>
+            <p> <strong>Posted by:</strong> {{recipe.user.first_name}} {{recipe.user.last_name}} </p>
+        </div>
+        <div style="background-color: antiquewhite; padding: 10px; border-style: solid ; border: 10px; border-color: rgb(0, 0, 0); margin-top: 20px;"  > <!-- the border is not showing up because the div is not displaying as a block -->
+            <div>
+                <p> <strong>Description:</strong> {{recipe.description}} </p> <!-- to bolden the text, use <strong> </strong> -->
+                <p> <strong>Under 30 Minutes?:</strong> {{recipe.under_30}} </p>
+                <p style="margin-right: 5px;"><strong>Instructions:</strong> {{recipe.instructions}} </p>
+                <p> <strong>Date Made:</strong> {{recipe.date_cooked}}</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

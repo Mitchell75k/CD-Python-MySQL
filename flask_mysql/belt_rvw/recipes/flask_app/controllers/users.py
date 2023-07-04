@@ -3,29 +3,29 @@ from flask_bcrypt import Bcrypt #importing Bcrypt from flask_bcrypt to hash pass
 bcrypt = Bcrypt(app) #we are setting the variable bcrypt to Bcrypt(app) so that we can use bcrypt to hash passwords
 from flask import flash, redirect, render_template, request, session, url_for #type: ignore
 from flask_app.models.user import User #importing the User class from the user.py file in the models folder
+from flask_app.models.recipe import Recipe #importing the Recipe class from the recipe.py file in the models folder
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    return render_template("login.html")
 
 @app.route("/register", methods=["POST"])
 def register():
-    data = { # next time we can just use request.form to get the data from the form bc the keys in the form = the data dictionary keys , and its less steps
+    data = { 
         "fname" : request.form["fname"],
         "lname" : request.form["lname"],
         "email" : request.form["email"],
         "password" : request.form["password"],
         "confirm_password" : request.form["confirm_password"],
-        "bday" : request.form["bday"]
     }
     if not User.validate_reg(data): 
         return redirect("/")
     else:
-        pw_hash = Bcrypt(app).generate_password_hash(data["password"]) #we are hashing the password here from the form
-        data["password"] = pw_hash #we are setting the password in the data dictionary to the hashed password
+        pw_hash = Bcrypt(app).generate_password_hash(data["password"]) 
+        data["password"] = pw_hash 
         user_id = User.save(data)
-        session["user_id"] = user_id #we are setting the session user_id to the user_id that is returned from the save method to log the user in after they register
-        return redirect (url_for('success', id = session["user_id"])) #here we are redirecting to the success page and passing in the id of the user that was just created with the session user_id
+        session["user_id"] = user_id 
+        return redirect (url_for('success', id = session["user_id"])) 
     
 
 @app.route("/success/<int:id>")
@@ -35,9 +35,8 @@ def success(id):
         return redirect("/")
     data = {
         "id": id
-    }
-    user = User.get_one(data) #we are getting the user from the database here by passing in the data dictionary with the id of the user that was just created
-    return render_template("user_page.html", user = user)
+    } 
+    return render_template("user_page.html", user = User.get_by_id(data), recipes = Recipe.get_all_recipes_with_chef())
 
 @app.route("/login", methods=["POST"])
 def login():
@@ -49,15 +48,15 @@ def login():
         flash("Invalid Email/Password", 'log')
         return redirect("/")
     
-    elif not bcrypt.check_password_hash(user.password, request.form["password"]): #we are checking the password here by passing in the hashed password from the database and the password from the form
+    elif not bcrypt.check_password_hash(user.password, request.form["password"]): 
         flash("Invalid Email/Password", 'log')
         return redirect("/")
     else:
-        session["user_id"] = user.id # type: ignore #we are setting the session user_id to the user_id that is returned from the get_by_email method to log the user in after they register
+        session["user_id"] = user.id 
         return redirect (url_for('success', id = session["user_id"]))
 
 
 @app.route("/logout")
 def logout():
-    session.clear() #we are clearing the session here to log the user out
+    session.clear() 
     return redirect("/")

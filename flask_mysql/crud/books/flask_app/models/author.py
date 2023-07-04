@@ -8,7 +8,6 @@ class Author:
         self.favorite_books = []
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
-        self.favorite_books = []
 
 
     @classmethod
